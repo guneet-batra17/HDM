@@ -1,0 +1,35 @@
+{%extends 'managerbase.html'%}
+{%block content%}
+<div class="row">
+    <div class="col-sm-10">
+        <table class="form-emboss table" style="border:1px black bold">
+            <tr>
+                <td><h3>Department Name</h3></td>
+                <td><h3>Department Strength</h3></td>
+                <td><h3>Department Location</h3></td>
+                <td><h3>Department Head</h3></td>
+            </tr>
+            {%for i in department%}
+            <tr>
+                <td>
+                    {{i.department_name}}
+                </td>
+                <td>
+                    {{i.department_strength}}
+                </td>
+                <td>
+                    {{i.department_location}}
+                </td>
+                <td>
+                    {{i.department_head}}
+                </td>
+                <td>
+                    <a href="/departmentupdate/?id={{i.department_id}}" class="btn btn-primary">Update</a></td><td><a href="/departmentdelete/?id={{i.department_id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+
+</div>
+{%endblock content%}

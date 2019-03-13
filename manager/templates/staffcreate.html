@@ -1,0 +1,58 @@
+{%extends 'managerbase.html'%}
+{%block content%}
+<div class="row">
+    <div class="col-sm-10">
+        <form method="post" enctype="multipart/form-data">
+            {% if success %}
+            <script>alert('Successfully Created');</script>
+            {% endif %}
+            {% if failed %}
+            <script>alert('Not Created');</script>
+            {% endif %}
+            {%csrf_token%}
+            <table class="table form-emboss">
+                <tr>
+                    <td>Member First Name</td>
+                    <td><input type="text" name="member_first_name" id="member_first_name"></td>
+                </tr>
+                <tr>
+                    <td>Member Last Name</td>
+                    <td><input type="text" name="member_last_name" id="member_last_name"></td>
+                </tr>
+                <tr>
+                    <td>Member Address</td>
+                    <td><input type="text" name="member_address" id="member_address"></td>
+                </tr>
+                <tr>
+                    <td>Member Phone</td>
+                    <td><input type="text" name="member_phone" id="member_phone"></td>
+                </tr>
+                <tr>
+                    <td>Member E-mail</td>
+                    <td><input type="email" name="member_email" id="member_email"></td>
+                </tr>
+                <tr>
+                    <td>Member Image</td>
+                    <td><input type="file" name="member_image" id="member_image"></td>
+                </tr>
+                <tr>
+                    <td>Member DOB</td>
+                    <td><input type="date" name="member_dob" id="member_dob"></td>
+                </tr>
+                <tr>
+                    <td>Member Gender</td>
+                    <td><input type="radio" name="member_gender" id="member_gender" value="Male">Male
+                    <input type="radio" name="member_gender" id="member_gender1" value="Female">Female</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Create">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+</div>
+{%endblock content%}

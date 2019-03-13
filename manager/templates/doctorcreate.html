@@ -1,0 +1,66 @@
+{%extends 'managerbase.html'%}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-10">
+        <form method="post" enctype="multipart/form-data">
+            {% if success %}
+            <script>alert('Successfully Created');</script>
+            {% endif %}
+            {% if invalid %}
+            <script>alert('Not Created');</script>
+            {% endif %}
+            {%csrf_token%}
+            <table class="table form-emboss">
+                <tr>
+                    <td>Doctor Department</td>
+                    <td>
+                        <select name="doctor_department">
+                            {% for i in data %}
+                            <option value="{{i.department_id}}">{{i.department_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Doctor First Name</td>
+                    <td><input type="text" name="doctor_first_name" id="doctor_first_name" required> </td>
+                </tr>
+                <tr>
+                    <td>Doctor Last Name</td>
+                    <td><input type="text" name="doctor_last_name" id="doctor_last_name"> </td>
+                </tr>
+                <tr>
+                    <td>Doctor Address</td>
+                    <td><input type="text" name="doctor_address" id="doctor_address"> </td>
+                </tr>
+                <tr>
+                    <td>Doctor E-mail</td>
+                    <td><input type="text" name="doctor_email" id="doctor_email"> </td>
+                </tr>
+                <tr>
+                    <td>Doctor Phone</td>
+                    <td><input type="text" name="doctor_phone" id="doctor_phone"> </td>
+                </tr>
+                <tr>
+                    <td>Doctor DOB</td>
+                    <td><input type="date" name="doctor_dob" id="doctor_dob"> </td>
+                </tr>
+                <tr>
+                    <td>Doctor Photo</td>
+                    <td><input type="file" name="doctor_photo" id="doctor_photo"> </td>
+                </tr>
+                <tr>
+                    <td>Doctor Gender</td>
+                    <td><input type=radio name="doctor_gender" id="doctor_gender" value="Male">Male
+                    <input type=radio name="doctor_gender" id="doctor_gender1" value="Female">Female</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Create"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</div>
+{%endblock content%}

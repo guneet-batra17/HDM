@@ -1,0 +1,33 @@
+{%extends 'managerbase.html'%}
+{%block content%}
+<div class="row">
+    <div class="col-sm-11 form-emboss">
+        <table class="table">
+            <tr>
+                <td>Doctor First Name</td>
+                <td>Doctor Last Name</td>
+                <td>Doctor Address</td>
+                <td>Doctor Phone</td>
+                <td>Doctor Photo</td>
+                <td>Doctor E-mail</td>
+                <td>Doctor Department</td>
+                <td>Doctor Gender</td>
+            </tr>
+            {%for i in data%}
+            <tr>
+                <td>{{i.doctor_first_name}}</td>
+                <td>{{i.doctor_last_name}}</td>
+                <td>{{i.doctor_address}}</td>
+                <td>{{i.doctor_phone}}</td>
+                <td><img src="/media/{{i.doctor_photo}}" height="50px"width="50px"> </td>
+                <td>{{i.doctor_email}}</td>
+                <td>{{i.doctor_department_id}}</td>
+                <td>{{i.doctor_gender}}</td>
+                <td><a href="/doctorupdate/?id={{i.doctor_id}}" class="btn btn-primary">Update</a></td><td><a href="/doctordelete/?id={{i.doctor_id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+</div>
+{%endblock content%}

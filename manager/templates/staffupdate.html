@@ -1,0 +1,58 @@
+{%extends 'managerbase.html'%}
+{%block content%}
+<div class="row">
+    <div class="col-sm-10">
+        <form method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <table class="table form-emboss">
+                <tr>
+                    <td>Member First Name</td>
+                    <td><input type="text" name="member_first_name" id="member_first_name" value="{{mdata.member_first_name}}"></td>
+                </tr>
+                <tr>
+                    <td>Member Last Name</td>
+                    <td><input type="text" name="member_last_name" id="member_last_name" value="{{mdata.member_last_name}}"></td>
+                </tr>
+                <tr>
+                    <td>Member Address</td>
+                    <td><input type="text" name="member_address" id="member_address" value="{{mdata.member_address}}"></td>
+                </tr>
+                <tr>
+                    <td>Member Phone</td>
+                    <td><input type="text" name="member_phone" id="member_phone" value="{{mdata.member_phone}}"></td>
+                </tr>
+                <tr>
+                    <td>Member E-mail</td>
+                    <td><input type="email" name="member_email" id="member_email" value="{{mdata.member_email}}" readonly="true"></td>
+                </tr>
+                <tr>
+                    <td>Member Image</td>
+                    <td><input type="file" name="member_image" id="member_image" value="{{mdata.member_image}}"></td>
+                </tr>
+                <tr>
+                    <td>Member DOB</td>
+                    <td><input type="date" name="member_dob" id="member_dob" value="{{ mdata.member_dob }}"></td>
+                </tr>
+                <tr>
+                    <td>Member Gender</td>
+                    {% if i.member_gender == "Male" %}
+                    <td><input type="radio" name="member_gender" id="member_gender" value="Male" checked="true">Male
+                    <input type="radio" name="member_gender" id="member_gender1" value="Female">Female</td>
+                    {%else%}
+                    <td><input type="radio" name="member_gender" id="member_gender2" value="Male">Male
+                    <input type="radio" name="member_gender" id="member_gender3" value="Female" checked="true">Female</td>
+                    {%endif%}
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="UPDATE">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+
+</div>
+{%endblock content%}

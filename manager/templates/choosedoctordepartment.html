@@ -1,0 +1,13 @@
+{%extends 'managerbase.html'%}
+{%block content%}
+<div class="row">
+    <div class="col-sm-10">
+        <h3>Choose Doctor Department</h3>
+        <select>{% for i in data %}
+            <option value="{{i.department_id}}">{{i.department_name}}</option>
+        {%endfor%}
+        </select>
+
+    </div>
+</div>
+{%endblock content%}

@@ -1,0 +1,58 @@
+{%extends 'managerbase.html'%}
+{%block content%}
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table form-emboss">
+            <tr>
+                <td>
+                    Member First Name
+                </td>
+                <td>Member Last Name</td>
+                <td>
+                    Member Address
+                </td>
+                <td>
+                    Member Image
+                </td>
+                <td>
+                    Member Phone
+                </td>
+                <td>
+                    Member Email
+                </td>
+                <td>
+                    Member Gender
+                </td>
+                <td>
+                    Member DOB
+                </td>
+                <td>
+                    Member Status
+                </td>
+            </tr>
+            {%for i in mdata%}
+            <tr>
+                <td>{{i.member_first_name}}</td>
+                <td>{{i.member_last_name}}</td>
+                <td>{{i.member_address}}</td>
+                <td><img src="/media/{{i.member_image}}" height="50px" width="50px"></td>
+                <td>{{i.member_phone}}</td>
+                <td>{{i.member_email}}</td>
+                <td>{{i.member_gender}}</td>
+                <td>{{i.member_dob}}</td>
+                <td>{% if i.member_status == True %}
+                <label>Active</label>
+                    {%else%}
+                    <label>Inactive</label>
+                    {%endif%}
+                </td>
+                <td><a href="/staffupdate/?id={{i.member_id}}" class="btn btn-primary">Update</a><a href="/staffdelete/?id={{i.member_id}}" class="btn btn-danger">Delete</a>
+            </td>
+            </tr>
+            {%endfor%}
+        </table>
+
+    </div>
+
+</div>
+{%endblock content%}

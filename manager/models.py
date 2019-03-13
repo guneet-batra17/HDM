@@ -1,0 +1,68 @@
+from django.db import models
+class UserRole(models.Model):
+    role_id=models.AutoField(primary_key=True)
+    role_name=models.CharField(max_length=225,default="",unique=True)
+class Manager(models.Model):
+    roleid=models.ForeignKey(UserRole,on_delete=models.CASCADE,default="")
+    user_name=models.CharField(max_length=255,default="")
+    user_email=models.EmailField(primary_key=True,max_length=255,default="")
+    user_password=models.CharField(max_length=20,default="")
+    user_mobile=models.CharField(max_length=20,default="",null=True)
+    user_landmark=models.CharField(max_length=20,default="",null=True)
+    user_city=models.CharField(max_length=20,default="",null=True)
+    user_state=models.CharField(max_length=20,default="",null=True)
+    user_pincode=models.CharField(max_length=20,default="",null=True)
+    user_image=models.CharField(max_length=20,default="",null=True)
+    user_isactive=models.BooleanField(default=True)
+    user_billaddress=models.CharField(max_length=20,default="",null=True)
+    user_gender=models.CharField(max_length=20,default="",null=True)
+
+class Department(models.Model):
+    department_id=models.AutoField(primary_key=True)
+    department_name=models.CharField(max_length=225)
+    department_strength=models.IntegerField(null=True)
+    department_location=models.CharField(max_length=225)
+    department_head=models.CharField(max_length=225)
+
+class Doctor(models.Model):
+    role_id=models.ForeignKey(UserRole,on_delete=models.CASCADE,default="",null=True)
+    doctor_id=models.AutoField(primary_key=True)
+    doctor_first_name=models.CharField(max_length=225,default="",null=True)
+    doctor_last_name=models.CharField(max_length=225,default="",null=True)
+    doctor_department=models.ForeignKey(Department,on_delete=models.CASCADE,default="")
+    doctor_address=models.CharField(max_length=500,default="")
+    doctor_email=models.EmailField(max_length=225)
+    doctor_phone=models.CharField(max_length=225,null=True)
+    doctor_photo=models.CharField(max_length=225,null=True)
+    doctor_gender=models.CharField(max_length=10)
+    doctor_dob=models.DateField(null=True)
+    doctor_password=models.CharField(null=True,max_length=1100)
+
+class Staff(models.Model):
+    role_id=models.ForeignKey(UserRole,on_delete=models.CASCADE,default="",null=True)
+    member_id=models.AutoField(primary_key=True)
+    member_first_name=models.CharField(default="",max_length=224,null=True)
+    member_last_name=models.CharField(default="",max_length=225,null=True)
+    member_address=models.CharField(default="",max_length=224)
+    member_email=models.EmailField(default="",max_length=224)
+    member_phone=models.CharField(default="",max_length=225)
+    member_image=models.CharField(default="",max_length=225,null=True)
+    member_gender=models.CharField(default="",max_length=225)
+    member_status=models.BooleanField(default=True)
+    member_dob=models.DateField(null=True)
+    member_password=models.CharField(null=True,max_length=1100)
+
+class UserData(models.Model):
+    role_id=models.ForeignKey(UserRole,on_delete=models.CASCADE,default="",null=True)
+    member_id=models.AutoField(primary_key=True)
+    member_first_name=models.CharField(default="",max_length=224,null=True)
+    member_last_name=models.CharField(default="",max_length=225,null=True)
+    member_address=models.CharField(default="",max_length=224)
+    member_email=models.EmailField(default="",max_length=224)
+    member_phone=models.CharField(default="",max_length=225)
+    member_image=models.CharField(default="",max_length=225,null=True)
+    member_gender=models.CharField(default="",max_length=225)
+    member_status=models.BooleanField(default=True)
+    member_dob=models.DateField(null=True)
+    member_password=models.CharField(null=True,max_length=1100)
+# Create your models here.
